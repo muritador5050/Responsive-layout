@@ -1,28 +1,28 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-module.exports = {
-  //Entry
-  entry: './src/index.js',
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-  //Output
+module.exports = {
+  entry: './src/index.js',
   output: {
-    filename: '[name].[contenthash].js',
+    filename: 'bundle.[fullhash].js',
     path: path.resolve(__dirname, 'dist'),
   },
-
-  module: {
-    //Rule
-    rules: [{ test: /\.(js|jsx)$/, use: { loader: 'babel-loader' } }],
-  },
-
-  //Plugin
-  plugin: [
+  plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve(__dirname, 'src', 'index.html'),
-      inject: true,
+      title: 'winter collection',
+      template: './public/index.html',
     }),
   ],
+
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+    ],
+  },
 };

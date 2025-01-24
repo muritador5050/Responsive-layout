@@ -1,36 +1,38 @@
-const merge = require('webpack-merge');
-const commonConfig = require('./webpack.config.common');
+const { merge } = require('webpack-merge');
+const common = require('./webpack.config.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 
-//prod-config
-module.exports = merge(commonConfig, {
+module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
+  plugins: [
+    new CssMinimizerWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
+    }),
+  ],
 
-  plugin: [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })],
   module: {
     rules: [
-      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
     ],
   },
-
   optimization: {
+    minimize: true,
     minimizer: [
-      new OptimizeCssAssetsWebpackPlugin({
-        cssProcessorOptions: {
-          map: {
-            inline: false,
-            annotation: true,
-          },
-        },
-      }),
       new TerserPlugin({
-        parallel: true,
-        // Enable file caching
-        cache: true,
-        sourceMap: true,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
+          mangle: true,
+        },
       }),
     ],
   },
