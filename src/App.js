@@ -15,7 +15,7 @@ function App() {
           <Route index element={<Puffers />} />
           <Route path='/men' element={<Men />} />
           <Route path='/women' element={<Women />} />
-          <Route path='/sales' element={<Sale />} />
+          <Route path='/sale' element={<Sale />} />
           <Route path='/accessories' element={<Accessories />} />
           <Route path='/giftcard' element={<Giftcard />} />
         </Route>
