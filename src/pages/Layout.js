@@ -1,5 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import '../styles/Layout.css';
+import user from '../assets.png/user-pic.jpg';
 function Layout() {
   return (
     <>
@@ -15,7 +16,7 @@ function Layout() {
             </ul>
             <ul className='nav__list nav__list--primary'>
               <li className='nav__item'>
-                <Link className='nav__link' to='/women'>
+                <Link className='nav__link ' to='/women'>
                   women
                 </Link>
               </li>
@@ -44,9 +45,9 @@ function Layout() {
               </li>
             </ul>
             <ul className='nav__list nav__list--mg-right'>
-              <li className='nav__item'>
-                <img className='nav__img' alt='user' />
-                cart
+              <li className='nav__item nav__item--img-box'>
+                <img className='nav__img' src={user} alt='user' />
+                <small className='cart-text'>cart(0)</small>
               </li>
             </ul>
           </nav>
