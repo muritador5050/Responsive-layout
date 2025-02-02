@@ -1,7 +1,12 @@
 import { Link, Outlet } from 'react-router-dom';
 import '../styles/Layout.css';
 import user from '../assets.png/user-pic.jpg';
+import { useState } from 'react';
 function Layout() {
+  const [modal, setModal] = useState(false);
+  const handleClearModal = () => {
+    return setModal(false);
+  };
   return (
     <>
       <header>
@@ -49,13 +54,71 @@ function Layout() {
                 <img className='nav__img' src={user} alt='user' />
                 <small className='cart-text'>cart(0)</small>
               </li>
+              {/* menu icon goes hide */}
+              <div onClick={() => setModal(true)} className='menu-icon'>
+                <div className='menu-line'></div>
+                <div className='menu-line'></div>
+                <div className='menu-line'></div>
+              </div>
             </ul>
           </nav>
-          <div className='menu-icon'>
-            <div className='menu-line'></div>
-            <div className='menu-line'></div>
-            <div className='menu-line'></div>
-          </div>
+          {modal && (
+            <div className='modal'>
+              <ul className='modal__list'>
+                <li
+                  className='modal__close--btn'
+                  onClick={() => setModal(false)}
+                >
+                  X
+                </li>
+                <li className='modal__item'>
+                  <Link
+                    onClick={handleClearModal}
+                    className='modal__link'
+                    to='/women'
+                  >
+                    Women
+                  </Link>
+                </li>
+                <li className='modal__item'>
+                  <Link
+                    onClick={handleClearModal}
+                    className='modal__link'
+                    to='/men'
+                  >
+                    Men
+                  </Link>
+                </li>
+                <li className='modal__item'>
+                  <Link
+                    onClick={handleClearModal}
+                    className='modal__link'
+                    to='/accessories'
+                  >
+                    Accessories
+                  </Link>
+                </li>
+                <li className='modal__item'>
+                  <Link
+                    onClick={handleClearModal}
+                    className='modal__link'
+                    to='/sale'
+                  >
+                    Sale
+                  </Link>
+                </li>
+                <li className='modal__item'>
+                  <Link
+                    onClick={handleClearModal}
+                    className='modal__link'
+                    to='/giftcard'
+                  >
+                    Giftcard
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </header>
       <Outlet />
