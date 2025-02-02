@@ -25,6 +25,18 @@ img {
   max-width: 100%;
 }
 
+.menu-icon {
+  width: 200px;
+  height: 200px;
+  border: 2px solid red;
+}
+.menu-line {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+
 /* Layout style */
 header {
   background-color: var(--nav-color);

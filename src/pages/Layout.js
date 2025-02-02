@@ -51,6 +51,11 @@ function Layout() {
               </li>
             </ul>
           </nav>
+          <div className='menu-icon'>
+            <div className='menu-line'></div>
+            <div className='menu-line'></div>
+            <div className='menu-line'></div>
+          </div>
         </div>
       </header>
       <Outlet />
