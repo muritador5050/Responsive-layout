@@ -153,9 +153,7 @@ function Layout() {
               Accessibility Statement FAQ
             </p>
           </article>
-        </section>
-        <section className='footer__list list__four'>
-          <article className='list__article'>
+          <article className='list__article  list__four'>
             <p className='list__text'>SHOP</p>
             <ul>
               <li>Women</li>
@@ -166,6 +164,7 @@ function Layout() {
             </ul>
           </article>
         </section>
+
         <section className='footer__list list__five'>
           <div className='cell'>
             <div className='cell__item'>cell one</div>

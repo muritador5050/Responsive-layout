@@ -176,6 +176,10 @@ header {
 .list__one {
   flex-basis: 720px;
 }
+.list__three {
+  display: flex;
+  flex-grow: 1;
+}
 .list__four {
   padding-right: 5.5em;
 }
@@ -304,8 +308,19 @@ input[type='checkbox'] {
   font-size: 1.2rem;
 }
 /*media queries*/
-/* @media screen and (max-width: 1200px) {
-  .flex {
-    flex-direction: column;
+@media (max-width: 950px) {
+  .nav__list--primary {
+    display: none;
   }
-} */
+  .nav {
+    justify-content: space-between;
+  }
+
+  .footer {
+    display: block;
+  }
+  .footer__list,
+  .cell {
+    border: none;
+  }
+}

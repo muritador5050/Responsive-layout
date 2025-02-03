@@ -44,28 +44,34 @@ export default function Puffers() {
         <h2 className='category__text'>shop by category</h2>
         <ul className='category__list'>
           <li className='category__card'>
-            <img className='card__flip' src={girl} alt='card' />
-            <div className='card__temp'>
-              <h3 className='card__name'>
-                men
-                <sub className='card__sub'>11 items</sub>
-              </h3>
+            <div className='flip-trans'>
+              <img className='card__flip' src={girl} alt='card' />
+              <div className='card__temp'>
+                <h3 className='card__name'>
+                  men
+                  <sub className='card__sub'>11 items</sub>
+                </h3>
+              </div>
             </div>
           </li>
           <li className='category__card'>
-            <img className='card__flip' src={girl} alt='card' />
-            <div className='card__temp'>
-              <h3 className='card__name'>
-                women<sub className='card__sub'>12 items</sub>
-              </h3>
+            <div className='flip-trans'>
+              <img className='card__flip' src={girl} alt='card' />
+              <div className='card__temp'>
+                <h3 className='card__name'>
+                  women<sub className='card__sub'>12 items</sub>
+                </h3>
+              </div>
             </div>
           </li>
           <li className='category__card'>
-            <img className='card__flip' src={girl} alt='card' />
-            <div className='card__temp'>
-              <h3 className='card__name'>
-                accessories<sub className='card__sub'>16 items</sub>
-              </h3>
+            <div className='flip-trans'>
+              <img className='card__flip' src={girl} alt='card' />
+              <div className='card__temp'>
+                <h3 className='card__name'>
+                  accessories<sub className='card__sub'>16 items</sub>
+                </h3>
+              </div>
             </div>
           </li>
         </ul>
