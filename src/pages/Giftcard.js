@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/gift.css';
 import { giftCardPrice } from './contents';
 
 export default function Giftcard() {
   const [display, setDisplay] = useState(false);
-  const [prices, setPrices] = [giftCardPrice];
+  const [local, setLocal] = useState([]);
   const [selectPriceId, setSelectPriceId] = useState();
-  const selectedPrice = prices.find((price) => price.id === selectPriceId);
+  const selectedPrice = giftCardPrice.find(
+    (price) => price.id === selectPriceId
+  );
 
   function handleSelect(id) {
     setSelectPriceId(id);
   }
+  useEffect(() => {
+    localStorage.setItem('price', JSON.stringify(local));
+    const items = JSON.parse(localStorage.getItem('price'));
+    if (items) {
+      setLocal(items);
+    }
+  }, [local]);
 
   return (
     <section className='gift'>
@@ -33,7 +42,7 @@ export default function Giftcard() {
           <div className='gift__amount'>
             <p className='amount-text'>Amount</p>
             <ul className='amount-list'>
-              {prices.map((price) => {
+              {giftCardPrice.map((price) => {
                 return (
                   <li
                     onClick={() => handleSelect(price.id)}
