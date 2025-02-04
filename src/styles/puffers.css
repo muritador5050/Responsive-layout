@@ -363,7 +363,7 @@ img {
 }
 
 /*Media Query*/
-@media (max-width: 950px) {
+@media (max-width: 900px) {
   .flex {
     display: flex;
     flex-direction: column;

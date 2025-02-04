@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import '../styles/gift.css';
+import { giftCardPrice } from './contents';
+
 export default function Giftcard() {
   const [display, setDisplay] = useState(false);
+  const [prices, setPrices] = [giftCardPrice];
+  const [selectPriceId, setSelectPriceId] = useState();
+  const selectedPrice = prices.find((price) => price.id === selectPriceId);
+
+  function handleSelect(id) {
+    setSelectPriceId(id);
+  }
+
   return (
     <section className='gift'>
       <div className='gift__left'>
@@ -10,7 +20,12 @@ export default function Giftcard() {
       <section className='gift__right'>
         <h1 className='gift__card--text'>eGift Card</h1>
         <div className='gift__right--sub'>
-          <h2 className='gift__selected--price'>$546</h2>
+          <h2 className='gift__selected--price'>
+            {' '}
+            {selectedPrice
+              ? `$${selectedPrice?.price}`
+              : 'select price from below'}
+          </h2>
           <p className='gift__article'>
             You can't go wrong with a gift card. Choose an amount and write a
             personalized message to make this gift your own
@@ -18,11 +33,17 @@ export default function Giftcard() {
           <div className='gift__amount'>
             <p className='amount-text'>Amount</p>
             <ul className='amount-list'>
-              <li>$15</li>
-              <li>$25</li>
-              <li>$50</li>
-              <li>$100</li>
-              <li>$200</li>
+              {prices.map((price) => {
+                return (
+                  <li
+                    onClick={() => handleSelect(price.id)}
+                    className='price'
+                    key={price.id}
+                  >
+                    ${price.price}
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className='gift__qty'>
